@@ -16,13 +16,14 @@ class FetchVacantInformation
   }.freeze
 
   def call # rubocop:disable Metrics/MethodLength
-    results = {}
+    results = []
     reservation_elements.each_with_index do |elements, index|
       next unless key = include_target_words?(elements)
 
       reservation_info = reservation_elements[index + 1]
       extracted = extract_info(reservation_info)
-      results[key] = {
+      results << {
+        id: key,
         availability: extracted[:availability],
         context: extracted[:context]
       }

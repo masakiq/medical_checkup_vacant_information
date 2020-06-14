@@ -5,8 +5,7 @@ unless ENV['development']
 end
 
 def lambda_handler(event:, context:)
-    puts FetchVacantInformation.new.call
-    puts CheckPastDataOnS3.new.call
-    puts CheckPastDataOnDynamodb.new.call
+    info = FetchVacantInformation.new.call
+    UpdateVacantInformation.new(info).call
     { statusCode: 200, body: JSON.generate('Hello from Lambda!') }
 end
