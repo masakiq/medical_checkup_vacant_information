@@ -37,7 +37,9 @@ class UpdateVacantInformation
   end
 
   def update_item(item, info)
-    updated = info[:availability] != item['availability'] || info[:context] != item['context']
+    updated = info[:context] != item['context']
+
+    number = extract_number(info[:context])
 
     dynamodb.update_item(
       table_name: VACANT_INFO_TABLE,
@@ -51,6 +53,18 @@ class UpdateVacantInformation
           value: info[:context],
           action: 'PUT'
         },
+        context_past: {
+          value: item['context'],
+          action: 'PUT'
+        },
+        number: {
+          value: number,
+          action: 'PUT'
+        },
+        number_past: {
+          value: item['number'],
+          action: 'PUT'
+        },
         updated: {
           value: updated,
           action: 'PUT'
@@ -59,13 +73,24 @@ class UpdateVacantInformation
     )
   end
 
+  def extract_number(context)
+    context.match(/\A最短.+?より(?<number>\d{1,3})個の枠があります。\z/)[:number].to_i
+  rescue
+    0
+  end
+
   def create_item(info)
+    number = extract_number(info[:context])
+
     dynamodb.put_item(
       table_name: VACANT_INFO_TABLE,
       item:  {
         id:   info[:id],
         availability: info[:availability],
         context: info[:context],
+        context_past: info[:context],
+        number: number,
+        number_past: number,
         updated: true
       }
     )
