@@ -58,9 +58,10 @@ class NotifyToSlack
   end
 
   def notify_to_slack(body)
+    puts body
     parms = {
       text: body,
-      channel: '#medical_booking_ookubo_basic_pm',
+      channel: '#medical_booking',
       username: 'Medical Booking Bot',
       icon_emoji: ':hospital:'
     }
