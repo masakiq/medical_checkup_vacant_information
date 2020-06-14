@@ -37,7 +37,7 @@ class UpdateVacantInformation
   end
 
   def update_item(item, info)
-    updated = info[:context] != item['context']
+    updated = info[:availability] != item['availability'] || info[:context] != item['context']
 
     number = extract_number(info[:context])
 

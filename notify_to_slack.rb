@@ -10,6 +10,7 @@ class NotifyToSlack
 
   def call
     items = fetch_updated_items
+    items = truncate_items_with_fewer_diff(items)
     return if items.size == 0
     body = build_body(items)
     notify_to_slack(body)
@@ -27,6 +28,13 @@ class NotifyToSlack
       ).item
     end.select do |item|
       item['updated']
+    end
+  end
+
+  def truncate_items_with_fewer_diff(items)
+    items.select do |item|
+      item['availability'].to_s != item['availability_past'].to_s ||
+        (item['number'] - item['number_past']).abs > 5
     end
   end
 
