@@ -11,5 +11,10 @@ module Constants
     sanno_specified_pm: '山王　健保指定ドック【午後】'
   }.freeze
 
-  VACANT_INFO_TABLE = 'medical_checkup_vacant_information'
+  VACANT_INFO_TABLE =
+    if ENV['development']
+      'medical_checkup_vacant_information_development'
+    else
+      'medical_checkup_vacant_information'
+    end
 end
