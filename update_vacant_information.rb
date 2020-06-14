@@ -49,6 +49,10 @@ class UpdateVacantInformation
           value: info[:availability],
           action: 'PUT'
         },
+        availability_past: {
+          value: item['availability'],
+          action: 'PUT'
+        },
         context: {
           value: info[:context],
           action: 'PUT'
@@ -87,6 +91,7 @@ class UpdateVacantInformation
       item:  {
         id:   info[:id],
         availability: info[:availability],
+        availability_past: info[:availability],
         context: info[:context],
         context_past: info[:context],
         number: number,
