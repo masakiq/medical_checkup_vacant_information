@@ -49,8 +49,8 @@ class NotifyToSlack
     parms = {
       text: body,
       channel: '#medical_booking_ookubo_basic_pm',
-      username: 'MedicalBookingBot',
-      icon_emoji: ':raised_hands:'
+      username: 'Medical Booking Bot',
+      icon_emoji: ':hospital:'
     }
 
     uri = URI.parse(ENV['SLACK_WEBHOOK_URL'])
