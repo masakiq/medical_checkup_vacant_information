@@ -34,23 +34,27 @@ class NotifyToSlack
   def truncate_items_with_fewer_diff(items)
     items.select do |item|
       item['availability'].to_s != item['availability_past'].to_s ||
-        (item['number'] - item['number_past']).abs > 5
+        (item['number'].to_i - item['number_past'].to_i).abs > 5
     end
   end
 
   def build_body(items)
     body = '*空き情報が更新されました*'
     body << "\n\n"
-    body << '```'
     items.each do |item|
       next unless item['updated']
+      body << '```'
       body << "\n"
       body << TARGET_WORDS[item['id'].to_sym]
       body << "\n"
       body << item['context']
       body << "\n"
+      body << "以前の枠は #{item['number_past'].to_i} でした。"
+      body << "\n"
+      body << '```'
+      body << "\n"
     end
-    body << '```'
+    body
   end
 
   def notify_to_slack(body)
