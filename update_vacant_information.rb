@@ -6,7 +6,7 @@ class UpdateVacantInformation
   include Constants
 
   def initialize(vacant_info)
-    @client = Aws::DynamoDB::Client.new
+    @dynamodb = Aws::DynamoDB::Client.new
     @vacant_info = vacant_info
   end
 
@@ -16,51 +16,58 @@ class UpdateVacantInformation
 
   private
 
-  attr_reader :client, :vacant_info
+  attr_reader :dynamodb, :vacant_info
 
   def update_vacant_info
     vacant_info.each do |info|
-      id = info[:id]
-      availability = info[:availability]
-      context = info[:context]
-
-      item = client.get_item(
-        table_name: VACANT_INFO_TABLE,
-        key: { id: id }
-      ).item
-
+      item = get_item(info)
       if item
-        updated = availability != item['availability'] || context != item['context']
-
-        client.update_item(
-          table_name: VACANT_INFO_TABLE,
-          key: { id: id },
-          attribute_updates: {
-            availability: {
-              value: availability,
-              action: 'PUT'
-            },
-            context: {
-              value: context,
-              action: 'PUT'
-            },
-            updated: {
-              value: updated,
-              action: 'PUT'
-            }
-          }
-        )
+        update_item(item, info)
       else
-        client.put_item(
-          table_name: VACANT_INFO_TABLE,
-          item:  {
-            id:   id,
-            availability: availability,
-            context: context,
-            updated: true
-          }
-        )
+        create_item(info)
       end
     end
+  end
+
+  def get_item(info)
+    dynamodb.get_item(
+      table_name: VACANT_INFO_TABLE,
+      key: { id: info[:id] }
+    ).item
+  end
+
+  def update_item(item, info)
+    updated = info[:availability] != item['availability'] || info[:context] != item['context']
+
+    dynamodb.update_item(
+      table_name: VACANT_INFO_TABLE,
+      key: { id: info[:id] },
+      attribute_updates: {
+        availability: {
+          value: info[:availability],
+          action: 'PUT'
+        },
+        context: {
+          value: info[:context],
+          action: 'PUT'
+        },
+        updated: {
+          value: updated,
+          action: 'PUT'
+        }
+      }
+    )
+  end
+
+  def create_item(info)
+    dynamodb.put_item(
+      table_name: VACANT_INFO_TABLE,
+      item:  {
+        id:   info[:id],
+        availability: info[:availability],
+        context: info[:context],
+        updated: true
+      }
+    )
   end
 end
