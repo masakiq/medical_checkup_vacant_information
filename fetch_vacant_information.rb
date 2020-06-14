@@ -3,17 +3,9 @@
 # class fetch_vacant_information.rb
 class FetchVacantInformation
   require 'open-uri'
+  include Constants
 
   KENPO_URL = 'https://ks.its-kenpo.or.jp/customer/vacancies'
-
-  TARGET_WORDS = {
-    ookubo_basic_pm: '大久保　基本健診【午後】',
-    ookubo_specified_am: '大久保　健保指定ドック【午前】',
-    ookubo_specified_pm: '大久保　健保指定ドック【午後】',
-    sanno_basic_pm: '山王　基本健診【午後】',
-    sanno_specified_am: '山王　健保指定ドック【午前】',
-    sanno_specified_pm: '山王　健保指定ドック【午後】'
-  }.freeze
 
   def call # rubocop:disable Metrics/MethodLength
     results = []
