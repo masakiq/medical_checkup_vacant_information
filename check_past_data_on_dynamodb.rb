@@ -34,7 +34,7 @@ class CheckPastDataOnDynamodb
     result = client.get_item(
       table_name: TABLE,
       key: {
-        id: 'hoge'
+        id: 'hogehoge'
       }
     )
 

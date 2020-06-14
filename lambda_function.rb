@@ -1,6 +1,8 @@
 require 'json'
-# require 'check_vacant_information'
-# require 'check_past_data_on_s3'
+unless ENV['development']
+  require 'check_vacant_information'
+  require 'check_past_data_on_s3'
+end
 
 def lambda_handler(event:, context:)
     puts CheckVacantInformation.new.call
