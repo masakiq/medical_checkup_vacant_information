@@ -16,7 +16,7 @@ class FetchVacantInformation
       extracted = extract_info(reservation_info)
       results << {
         id: key,
-        availability: extracted[:availability],
+        availability: extracted[:availability] == '○',
         context: extracted[:context]
       }
     end

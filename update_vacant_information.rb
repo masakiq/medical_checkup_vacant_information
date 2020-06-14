@@ -21,7 +21,7 @@ class UpdateVacantInformation
   def update_vacant_info
     vacant_info.each do |info|
       id = info[:id]
-      availability = info[:availability] == '○'
+      availability = info[:availability]
       context = info[:context]
 
       item = client.get_item(
