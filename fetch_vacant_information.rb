@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# class check_vacant_information.rb
-class CheckVacantInformation
+# class fetch_vacant_information.rb
+class FetchVacantInformation
   require 'open-uri'
 
   KENPO_URL = 'https://ks.its-kenpo.or.jp/customer/vacancies'
