@@ -40,6 +40,8 @@ class UpdateVacantInformation
     updated = info[:availability] != item['availability'] || info[:context] != item['context']
 
     number = extract_number(info[:context])
+    diff_number = calculate_diff_number(number, item['number'], item['stacked_diff_number'].to_i)
+    stacked_diff_number, stacked_diff_number_past = calculate_stacked_diff_number(diff_number)
 
     dynamodb.update_item(
       table_name: VACANT_INFO_TABLE,
@@ -69,6 +71,14 @@ class UpdateVacantInformation
           value: item['number'],
           action: 'PUT'
         },
+        stacked_diff_number: {
+          value: stacked_diff_number,
+          action: 'PUT'
+        },
+        stacked_diff_number_past: {
+          value: stacked_diff_number_past,
+          action: 'PUT'
+        },
         updated: {
           value: updated,
           action: 'PUT'
@@ -81,6 +91,18 @@ class UpdateVacantInformation
     context.match(/\A最短.+?より(?<number>\d{1,3})個の枠があります。\z/)[:number].to_i
   rescue
     0
+  end
+
+  def calculate_diff_number(number, number_past, stacked_diff_number)
+    stacked_diff_number + (number - number_past)
+  end
+
+  def calculate_stacked_diff_number(diff_number)
+    if diff_number.abs >= 5
+      [0, diff_number]
+    else
+      [diff_number, diff_number]
+    end
   end
 
   def create_item(info)
@@ -96,6 +118,8 @@ class UpdateVacantInformation
         context_past: info[:context],
         number: number,
         number_past: number,
+        stacked_diff_number: 0,
+        stacked_diff_number_past: 0,
         updated: true
       }
     )
