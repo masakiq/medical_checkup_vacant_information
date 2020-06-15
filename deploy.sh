@@ -1,5 +1,6 @@
 #!/usr/bin/env sh
 
+rm tmp/*
 cp -f *.rb tmp/
 rm tmp/main.rb
 chmod -R 755 tmp/*
