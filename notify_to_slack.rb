@@ -59,11 +59,11 @@ class NotifyToSlack
 
   def build_number_diff_body(stacked_diff_number_past)
     if stacked_diff_number_past.positive?
-      "枠が #{ stacked_diff_number_past.to_i } 増えました。"
+      "枠が #{ stacked_diff_number_past.abs } 増えました。"
     elsif stacked_diff_number_past == 0 # 0 のケースは存在しない
       '枠の増減はありません。'
     else
-      "枠が #{ stacked_diff_number_past.to_i } 減りました。"
+      "枠が #{ stacked_diff_number_past.abs } 減りました。"
     end
   end
 
