@@ -49,12 +49,22 @@ class NotifyToSlack
       body << "\n"
       body << item['context']
       body << "\n"
-      body << "前回との枠の増減は #{item['stacked_diff_number_past'].to_i} です。"
+      body << build_number_diff_body(item['stacked_diff_number_past'].to_i)
       body << "\n"
       body << '```'
       body << "\n"
     end
     body
+  end
+
+  def build_number_diff_body(stacked_diff_number_past)
+    if stacked_diff_number_past.positive?
+      "枠が #{ stacked_diff_number_past.to_i } 増えました。"
+    elsif stacked_diff_number_past == 0 # 0 のケースは存在しない
+      '枠の増減はありません。'
+    else
+      "枠が #{ stacked_diff_number_past.to_i } 減りました。"
+    end
   end
 
   def notify_to_slack(body)
