@@ -34,7 +34,7 @@ class NotifyToSlack
   def truncate_items_with_fewer_diff(items)
     items.select do |item|
       item['availability'].to_s != item['availability_past'].to_s ||
-        (item['number'].to_i - item['number_past'].to_i).abs > 5
+        item['stacked_diff_number'].to_i != item['stacked_diff_number_past'].to_i
     end
   end
 
@@ -49,7 +49,7 @@ class NotifyToSlack
       body << "\n"
       body << item['context']
       body << "\n"
-      body << "以前の枠は #{item['number_past'].to_i} でした。"
+      body << "前回との枠の増減は #{item['stacked_diff_number_past'].to_i} です。"
       body << "\n"
       body << '```'
       body << "\n"
