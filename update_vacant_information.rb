@@ -98,7 +98,7 @@ class UpdateVacantInformation
   end
 
   def calculate_stacked_diff_number(diff_number)
-    if diff_number.abs >= 30
+    if diff_number.abs >= 50
       [0, diff_number]
     else
       [diff_number, diff_number]
