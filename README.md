@@ -1,7 +1,13 @@
 * Execute on local
 
 ```sh
-development=true ruby main.rb
+gem install pry
+gem install pry-byebug
+gem install aws-sdk-dynamodb
+```
+
+```sh
+development=true ruby execute_on_development.rb
 ```
 
 * Deploy
