@@ -5,6 +5,7 @@ unless ENV['development']
   require 'domain/scraping_word'
   require 'domain/vacant_information'
   require 'domain/vacant_information_with_past'
+  require 'domain/abstract_vacant_information_repository'
   require 'vacant_information_table'
   require 'scraping_vacant_information'
   require 'get_vacant_information'
