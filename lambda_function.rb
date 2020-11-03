@@ -10,7 +10,7 @@ end
 def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument
   current_vacants = ScrapingVacantInformation.new.execute
   past_vacants = VacantInformationRepository.new.find_all
-  merged_vacants = MergePastVacantInformation.new.execute(current_vacants, past_vacants)
+  merged_vacants = MergePastNumberToCurrentVacantInformation.new.execute(current_vacants, past_vacants)
   filtered_vacants = FilterVacantInformation.new.execute(merged_vacants)
   NotifyVacantInformation.new.execute(filtered_vacants)
   PersistVacantInformation.new.execute(current_vacants)

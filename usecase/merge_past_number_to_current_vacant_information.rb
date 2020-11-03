@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# MergePastVacantInformation
-class MergePastVacantInformation
+# MergePastNumberToCurrentVacantInformation
+class MergePastNumberToCurrentVacantInformation
   def execute(current_vacants, past_vacants)
     merged_vacants = []
     current_vacants.each do |current_vacant|
