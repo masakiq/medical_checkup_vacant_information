@@ -16,14 +16,14 @@ development=true ruby execute_on_development.rb
 ruby execute_test.rb
 ```
 
-* Deploy
+* Deploy to Production
 
 ```sh
-./deploy.sh
+./deploy.sh production
 ```
 
-* Deploy Staging
+* Deploy to Staging
 
 ```sh
-./deploy_staging.sh
+./deploy.sh staging
 ```
