@@ -2,18 +2,9 @@
 
 require 'json'
 unless ENV['development']
-  require 'domain/scraping_word'
-  require 'domain/vacant_information'
-  require 'domain/vacant_information_with_past'
-  require 'domain/abstract_vacant_information_repository'
-  require 'usecase/persist_vacant_information'
-  require 'usecase/merge_past_vacant_information'
-  require 'usecase/filter_vacant_information'
-  require 'usecase/abstract_scraping_vacant_information'
-  require 'usecase/abstract_notify_vacant_information'
-  require 'infra/vacant_information_repository'
-  require 'infra/scraping_vacant_information'
-  require 'infra/notify_vacant_information'
+  Dir["#{File.dirname(__FILE__)}/domain/*.rb"].sort.each { |file| require file }
+  Dir["#{File.dirname(__FILE__)}/usecase/*.rb"].sort.each { |file| require file }
+  Dir["#{File.dirname(__FILE__)}/infra/*.rb"].sort.each { |file| require file }
 end
 
 def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument
