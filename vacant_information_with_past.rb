@@ -10,7 +10,7 @@ class VacantInformationWithPast < VacantInformation
   end
 
   def exceed_the_threshold?
-    diff_number < -70 || diff_number > 10
+    diff_number < -70 || diff_number > 2
   end
 
   def scraping_word
