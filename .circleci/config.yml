@@ -1,0 +1,28 @@
+version: 2.1
+executors:
+  ruby_executor:
+    docker:
+      - image: circleci/ruby:2.7.2
+
+commands:
+  execute_test:
+    steps:
+      - run:
+          name: Run Rubocop
+          command: gem install rubocop && rubocop
+      - run:
+          name: Run test
+          command: ruby execute_test.rb
+
+jobs:
+  lambda_function_job:
+    executor:
+      name: ruby_executor
+    steps:
+      - checkout
+      - execute_test
+
+workflows:
+  build-debug:
+    jobs:
+      - lambda_function_job
