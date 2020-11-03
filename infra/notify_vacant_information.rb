@@ -1,23 +1,17 @@
 # frozen_string_literal: false
 
-# notify_vacant_information.rb
-class NotifyVacantInformation
-  attr_reader :vacants
-
-  def initialize(vacants)
-    @vacants = vacants
-  end
-
-  def execute
+# NotifyVacantInformation
+class NotifyVacantInformation < AbstractNotifyVacantInformation
+  def execute(vacants)
     return if vacants.empty?
 
-    body = build_body
+    body = build_body(vacants)
     notify_to_slack(body)
   end
 
   private
 
-  def build_body # rubocop:disable Metrics/AbcSize, Metrics/MethodLength
+  def build_body(vacants) # rubocop:disable Metrics/MethodLength
     body = '*空き情報が更新されました*'
     body << "\n\n"
     vacants.each do |vacant|
