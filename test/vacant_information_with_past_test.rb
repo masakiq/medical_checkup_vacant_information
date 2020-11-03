@@ -4,7 +4,7 @@ class VacantInformationWithPastTest < Test::Unit::TestCase
   def test_exceed_the_threshold_1
     past_vacant = VacantInformationWithPast.new(
       id: 'ookubo_basic_pm',
-      context: '最短 10/01 より21個の枠があります。',
+      context: '最短 10/01 より13個の枠があります。',
       past_number: 10
     )
 
@@ -14,7 +14,7 @@ class VacantInformationWithPastTest < Test::Unit::TestCase
   def test_exceed_the_threshold_2
     past_vacant = VacantInformationWithPast.new(
       id: 'ookubo_basic_pm',
-      context: '最短 10/01 より20個の枠があります。',
+      context: '最短 10/01 より12個の枠があります。',
       past_number: 10
     )
 
