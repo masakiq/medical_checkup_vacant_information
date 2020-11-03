@@ -4,7 +4,7 @@
 class VacantInformationWithPast < VacantInformation
   attr_reader :past_number
 
-  def initialize(id:, context:, past_number:)
+  def initialize(id:, past_number:, context: nil)
     @past_number = past_number
     super(id: id, context: context)
   end

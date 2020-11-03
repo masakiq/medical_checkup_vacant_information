@@ -10,6 +10,12 @@ gem install aws-sdk-dynamodb
 development=true ruby execute_on_development.rb
 ```
 
+* Execute test
+
+```sh
+ruby execute_test.rb
+```
+
 * Deploy
 
 ```sh
