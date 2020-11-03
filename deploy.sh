@@ -2,7 +2,7 @@
 
 rm tmp/*
 cp -f *.rb tmp/
-rm tmp/main.rb
+rm tmp/execute_on_development.rb
 chmod -R 755 tmp/*
 rm dest/medicalCheckupVacantInformation.zip
 cd tmp && zip -r ../dest/medicalCheckupVacantInformation.zip . && cd -
