@@ -3,7 +3,7 @@
 load 'lambda_function.rb'
 load 'scraping_word.rb'
 load 'domain/vacant_information.rb'
-load 'vacant_information_with_past.rb'
+load 'domain/vacant_information_with_past.rb'
 load 'vacant_information_table.rb'
 load 'scraping_vacant_information.rb'
 load 'get_vacant_information.rb'
