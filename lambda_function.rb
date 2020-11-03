@@ -2,7 +2,7 @@
 
 require 'json'
 unless ENV['development']
-  require 'scraping_word'
+  require 'domain/scraping_word'
   require 'domain/vacant_information'
   require 'domain/vacant_information_with_past'
   require 'vacant_information_table'
