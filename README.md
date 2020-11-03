@@ -21,3 +21,9 @@ ruby execute_test.rb
 ```sh
 ./deploy.sh
 ```
+
+* Deploy Staging
+
+```sh
+./deploy_staging.sh
+```
