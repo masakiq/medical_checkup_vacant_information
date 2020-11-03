@@ -1,19 +1,17 @@
 #!/usr/bin/env sh
 
-rm -rf tmp/*
-cp -f *.rb tmp/
-mkdir tmp/domain
-mkdir tmp/infra
-mkdir tmp/usecase
-cp -f domain/*.rb tmp/domain/
-cp -f infra/*.rb tmp/infra/
-cp -f usecase/*.rb tmp/usecase/
-rm tmp/execute_on_development.rb
-rm tmp/execute_test.rb
-chmod -R 755 tmp/*
-rm dest/medicalCheckupVacantInformation.zip
-cd tmp && zip -r ../dest/medicalCheckupVacantInformation.zip . && cd -
-rm -rf tmp/*
+rm -rf deploy/tmp/*
+cp -f lambda_function.rb deploy/tmp/
+mkdir deploy/tmp/domain
+mkdir deploy/tmp/infra
+mkdir deploy/tmp/usecase
+cp -f domain/*.rb deploy/tmp/domain/
+cp -f infra/*.rb deploy/tmp/infra/
+cp -f usecase/*.rb deploy/tmp/usecase/
+chmod -R 755 deploy/tmp/*
+rm deploy/dest/medicalCheckupVacantInformation.zip
+cd deploy/tmp && zip -r ../dest/medicalCheckupVacantInformation.zip . && cd -
+rm -rf deploy/tmp/*
 
 env=$1
 if [ "$env" = 'production' ]; then
@@ -26,6 +24,6 @@ else
 fi
 aws lambda update-function-code \
   --function-name $lambda_function_name \
-  --zip-file fileb://`pwd`/dest/medicalCheckupVacantInformation.zip
+  --zip-file fileb://`pwd`/deploy/dest/medicalCheckupVacantInformation.zip
 
-rm dest/medicalCheckupVacantInformation.zip
+rm deploy/dest/medicalCheckupVacantInformation.zip

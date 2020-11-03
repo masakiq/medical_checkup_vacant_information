@@ -1,5 +1,5 @@
-/tmp/*
-/dest/*
-!/tmp/.keep
-!/dest/.keep
+/deploy/tmp/*
+/deploy/dest/*
+!/deploy/tmp/.keep
+!/deploy/dest/.keep
 .env
