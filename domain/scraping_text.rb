@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# scraping_word.rb
-class ScrapingWord
+# ScrapingText
+class ScrapingText
   LIST = {
     ookubo_basic_pm: '大久保　基本健診【午後】',
     ookubo_one_day_medical_checkup_gastroscope_am: '大久保　1日人間ドック（胃内視鏡）【午前】',

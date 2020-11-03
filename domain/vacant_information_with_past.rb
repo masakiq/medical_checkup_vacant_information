@@ -14,7 +14,7 @@ class VacantInformationWithPast < VacantInformation
   end
 
   def scraping_word
-    ScrapingWord.new(id: id)
+    ScrapingText.new(id: id)
   end
 
   def display_diff_number
