@@ -1,10 +1,8 @@
 # frozen_string_literal: true
 
-# class scraping_vacant_information.rb
-class ScrapingVacantInformation
+# class AbstractScrapingVacantInformation
+class ScrapingVacantInformation < AbstractScrapingVacantInformation
   require 'open-uri'
-
-  KENPO_URL = 'https://ks.its-kenpo.or.jp/customer/vacancies'
 
   def execute
     vacants = []
