@@ -20,7 +20,7 @@ class VacantInformationRepository < AbstractVacantInformationRepository
 
   def find_all
     vacants = []
-    ScrapingWord::LIST.each_key do |id|
+    ScrapingText::LIST.each_key do |id|
       item = find(id: id)
       vacants << map_vacant_info(id, item)
     end

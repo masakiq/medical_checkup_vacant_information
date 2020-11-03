@@ -37,7 +37,7 @@ class ScrapingVacantInformation < AbstractScrapingVacantInformation
   end
 
   def vacant_id_if_include_target_wrod(elements)
-    ScrapingWord::LIST.each do |id, value|
+    ScrapingText::LIST.each do |id, value|
       return id if elements.include?(value)
     end
     false
