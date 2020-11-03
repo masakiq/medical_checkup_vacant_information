@@ -17,7 +17,7 @@ class NotifyVacantInformation < AbstractNotifyVacantInformation
     vacants.each do |vacant|
       body << '```'
       body << "\n"
-      body << vacant.scraping_word.target_word
+      body << vacant.scraping_text.body
       body << "\n"
       body << vacant.context
       body << "\n"
