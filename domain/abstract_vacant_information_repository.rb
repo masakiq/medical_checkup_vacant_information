@@ -10,11 +10,11 @@ class AbstractVacantInformationRepository
     raise NotImplementedError, "Not implemented #{self.class}##{__method__}!!"
   end
 
-  def update(id:) # rubocop:disable Lint/UnusedMethodArgument
+  def update(vacant:) # rubocop:disable Lint/UnusedMethodArgument
     raise NotImplementedError, "Not implemented #{self.class}##{__method__}!!"
   end
 
-  def create(id:) # rubocop:disable Lint/UnusedMethodArgument
+  def create(vacant:) # rubocop:disable Lint/UnusedMethodArgument
     raise NotImplementedError, "Not implemented #{self.class}##{__method__}!!"
   end
 end
