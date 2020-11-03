@@ -9,8 +9,8 @@ unless ENV['development']
   require 'infra/vacant_information_repository'
   require 'usecase/persist_vacant_information'
   require 'usecase/merge_past_vacant_information'
+  require 'usecase/filter_vacant_information'
   require 'scraping_vacant_information'
-  require 'filter_vacant_information'
   require 'notify_vacant_information'
 end
 
