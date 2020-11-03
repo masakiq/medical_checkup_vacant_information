@@ -7,6 +7,7 @@ unless ENV['development']
   require 'domain/vacant_information_with_past'
   require 'domain/abstract_vacant_information_repository'
   require 'infra/vacant_information_repository'
+  require 'usecase/persist_vacant_information'
   require 'scraping_vacant_information'
   require 'merge_past_vacant_information'
   require 'filter_vacant_information'
@@ -19,17 +20,6 @@ def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument
   merged_vacants = MergePastVacantInformation.new(current_vacants, past_vacants).execute
   filtered_vacants = FilterVacantInformation.new(merged_vacants).execute
   NotifyVacantInformation.new(filtered_vacants).execute
-  persist_vacants(current_vacants)
+  PersistVacantInformation.new(current_vacants).execute
   { statusCode: 200, body: JSON.generate('Hello from Lambda!') }
-end
-
-def persist_vacants(vacants)
-  vacants.each do |vacant|
-    item = VacantInformationRepository.new.find(id: vacant.id)
-    if item
-      VacantInformationRepository.new.update(vacant: vacant)
-    else
-      VacantInformationRepository.new.create(vacant: vacant)
-    end
-  end
 end

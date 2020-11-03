@@ -4,8 +4,10 @@ rm -rf tmp/*
 cp -f *.rb tmp/
 mkdir tmp/domain
 mkdir tmp/infra
+mkdir tmp/usecase
 cp -f domain/*.rb tmp/domain/
 cp -f infra/*.rb tmp/infra/
+cp -f usecase/*.rb tmp/usecase/
 rm tmp/execute_on_development.rb
 chmod -R 755 tmp/*
 rm dest/medicalCheckupVacantInformation.zip
