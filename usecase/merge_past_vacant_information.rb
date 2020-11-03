@@ -1,18 +1,11 @@
 # frozen_string_literal: true
 
-# merge_past_vacant_information.rb
+# MergePastVacantInformation
 class MergePastVacantInformation
-  attr_reader :current_vacants, :past_vacants
-
-  def initialize(current_vacants, past_vacants)
-    @current_vacants = current_vacants
-    @past_vacants = past_vacants
-  end
-
-  def execute
+  def execute(current_vacants, past_vacants)
     merged_vacants = []
     current_vacants.each do |current_vacant|
-      past_vacant = find_past_vacant_by_id(current_vacant.id)
+      past_vacant = find_past_vacant_by_id(current_vacant.id, past_vacants)
       merged_vacants << VacantInformationWithPast.new(
         id: current_vacant.id,
         context: current_vacant.context,
@@ -24,7 +17,7 @@ class MergePastVacantInformation
 
   private
 
-  def find_past_vacant_by_id(id)
+  def find_past_vacant_by_id(id, past_vacants)
     past_vacants.select do |vacant|
       id == vacant.id
     end.first

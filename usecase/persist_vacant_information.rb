@@ -2,11 +2,7 @@
 
 # PersistVacantInformation
 class PersistVacantInformation
-  def initialize(vacants)
-    @vacants = vacants
-  end
-
-  def execute
+  def execute(vacants)
     vacants.each do |vacant|
       item = VacantInformationRepository.new.find(id: vacant.id)
       if item
@@ -16,8 +12,4 @@ class PersistVacantInformation
       end
     end
   end
-
-  private
-
-  attr_reader :vacants
 end
