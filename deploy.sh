@@ -5,9 +5,11 @@ cp -f lambda_function.rb deploy/tmp/
 mkdir deploy/tmp/domain
 mkdir deploy/tmp/infra
 mkdir deploy/tmp/usecase
+mkdir deploy/tmp/presentation
 cp -f domain/*.rb deploy/tmp/domain/
 cp -f infra/*.rb deploy/tmp/infra/
 cp -f usecase/*.rb deploy/tmp/usecase/
+cp -f presentation/*.rb deploy/tmp/presentation/
 chmod -R 755 deploy/tmp/*
 rm deploy/dest/medicalCheckupVacantInformation.zip
 cd deploy/tmp && zip -r ../dest/medicalCheckupVacantInformation.zip . && cd -
