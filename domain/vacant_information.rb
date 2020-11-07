@@ -21,6 +21,6 @@ class VacantInformation
   def validate_id!
     return if ScrapingText::LIST.keys.map(&:to_s).include?(id)
 
-    raise StandardError, 'invalid id'
+    raise StandardError, "invalid id : #{id}"
   end
 end

@@ -48,6 +48,6 @@ class VacantInformationTest < Test::Unit::TestCase
       VacantInformation.new(id: 'invalid')
     end
 
-    assert_equal 'invalid id', e.message
+    assert_equal 'invalid id : invalid', e.message
   end
 end
