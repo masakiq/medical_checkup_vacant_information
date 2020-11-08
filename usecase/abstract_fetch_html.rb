@@ -2,10 +2,9 @@
 
 # AbstractFetchHtml
 class AbstractFetchHtml
-  KENPO_URL = 'https://ks.its-kenpo.or.jp/customer/vacancies'
-
+  # @param url [String] Target url
   # @return [Array<String>] HTML data for the target page
-  def execute
+  def execute(_url)
     raise NotImplementedError, "Not implemented #{self.class}##{__method__}!!"
   end
 end

@@ -2,9 +2,12 @@
 
 # FetchHtml
 class FetchHtml < AbstractFetchHtml
+  require 'open-uri'
+
+  # @param url [String] Target url
   # @return [Array<String>] description
-  def execute
-    content = OpenURI.open_uri(KENPO_URL).read
+  def execute(url)
+    content = OpenURI.open_uri(url).read
     content.split("\n").map(&:strip)
   end
 end
