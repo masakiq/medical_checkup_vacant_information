@@ -3,7 +3,7 @@
 class BuildPayloadForNotifyTest < Test::Unit::TestCase
   def test_execute_1 # rubocop:disable Metrics/MethodLength
     vacants = ScrapingText::LIST.keys.map do |text|
-      VacantInformationWithPast.new(
+      VacantWithPast.new(
         id: text,
         past_number: 5,
         context: '最短10/01より10個の枠があります。'

@@ -1,32 +1,32 @@
 # frozen_string_literal: true
 
-class VacantInformationTest < Test::Unit::TestCase
+class VacantTest < Test::Unit::TestCase
   def test_number_when_context_is_empty
-    vacant = VacantInformation.new(id: 'ookubo_basic_pm')
+    vacant = Vacant.new(id: 'ookubo_basic_pm')
 
     assert_equal(vacant.number, 0)
   end
 
   def test_number_when_context_is_nil
-    vacant = VacantInformation.new(id: 'ookubo_basic_pm', context: nil)
+    vacant = Vacant.new(id: 'ookubo_basic_pm', context: nil)
 
     assert_equal(vacant.number, 0)
   end
 
   def test_number_when_context_is_blank
-    vacant = VacantInformation.new(id: 'ookubo_basic_pm', context: '')
+    vacant = Vacant.new(id: 'ookubo_basic_pm', context: '')
 
     assert_equal(vacant.number, 0)
   end
 
   def test_number_when_context_is_random
-    vacant = VacantInformation.new(id: 'ookubo_basic_pm', context: 'あああ')
+    vacant = Vacant.new(id: 'ookubo_basic_pm', context: 'あああ')
 
     assert_equal(vacant.number, 0)
   end
 
   def test_number_when_context_is_valid_1
-    vacant = VacantInformation.new(
+    vacant = Vacant.new(
       id: 'ookubo_basic_pm',
       context: '現在のところ空きがありません。'
     )
@@ -35,7 +35,7 @@ class VacantInformationTest < Test::Unit::TestCase
   end
 
   def test_number_when_context_is_valid_2
-    vacant = VacantInformation.new(
+    vacant = Vacant.new(
       id: 'ookubo_basic_pm',
       context: '最短 10/01 より20個の枠があります。'
     )
@@ -45,7 +45,7 @@ class VacantInformationTest < Test::Unit::TestCase
 
   def test_initialize_when_id_is_invalid
     e = assert_raises StandardError do
-      VacantInformation.new(id: 'invalid')
+      Vacant.new(id: 'invalid')
     end
 
     assert_equal 'invalid id : invalid', e.message

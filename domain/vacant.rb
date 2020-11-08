@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# vacant_information.rb
-class VacantInformation
+# Vacant
+class Vacant
   attr_reader :id, :context
 
   def initialize(id:, context: '現在のところ空きがありません。')

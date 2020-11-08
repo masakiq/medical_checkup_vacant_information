@@ -2,8 +2,8 @@
 
 require 'aws-sdk-dynamodb'
 
-# VacantInformationRepository
-class VacantInformationRepository < AbstractVacantInformationRepository
+# VacantRepository
+class VacantRepository < AbstractVacantRepository
   VACANT_INFORMATION_TABLE =
     if ENV['development']
       'medical_checkup_vacant_information_development'
@@ -62,7 +62,7 @@ class VacantInformationRepository < AbstractVacantInformationRepository
   attr_reader :dynamodb
 
   def map_vacant_info(id, item)
-    VacantInformation.new(
+    Vacant.new(
       id: id,
       context: item&.dig('context')
     )

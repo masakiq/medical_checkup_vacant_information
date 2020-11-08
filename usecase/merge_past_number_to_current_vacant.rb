@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
-# MergePastNumberToCurrentVacantInformation
-class MergePastNumberToCurrentVacantInformation
+# MergePastNumberToCurrentVacant
+class MergePastNumberToCurrentVacant
   def execute(current_vacants, past_vacants)
     merged_vacants = []
     current_vacants.each do |current_vacant|
       past_vacant = find_past_vacant_by_id(current_vacant.id, past_vacants)
-      merged_vacants << VacantInformationWithPast.new(
+      merged_vacants << VacantWithPast.new(
         id: current_vacant.id,
         context: current_vacant.context,
         past_number: past_vacant.number

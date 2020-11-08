@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# vacant_information_with_past.rb
-class VacantInformationWithPast < VacantInformation
+# VacantWithPast
+class VacantWithPast < Vacant
   attr_reader :past_number
 
   def initialize(id:, past_number:, context: nil)
