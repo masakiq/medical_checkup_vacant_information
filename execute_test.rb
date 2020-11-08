@@ -1,7 +1,11 @@
 # frozen_string_literal: true
 
 require 'test/unit'
-require 'pry'
+begin
+  require 'pry'
+rescue LoadError
+  puts 'Does not exists `pry`'
+end
 
 load 'domain/vacant_information.rb'
 load 'domain/vacant_information_with_past.rb'

@@ -45,6 +45,6 @@ class ScrapingVacantInformation < AbstractScrapingVacantInformation
 
   def extract_info(info)
     text = info.match(%r{\A<td.+?>(?<text>.+?)</td>\z})[:text]
-    text.match(/\A(?<availability>[×|○])　+?(?<context>[最|現].+?)\z/)
+    text.match(/\A.+?(?<context>[最短|現在].+?)\z/)
   end
 end
