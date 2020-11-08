@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# AbstractScrapingVacantInformation
-class AbstractScrapingVacantInformation
+# AbstractScrapingVacant
+class AbstractScrapingVacant
   KENPO_URL = 'https://ks.its-kenpo.or.jp/customer/vacancies'
 
   def execute

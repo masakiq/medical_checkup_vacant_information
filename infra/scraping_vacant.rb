@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# class AbstractScrapingVacantInformation
-class ScrapingVacantInformation < AbstractScrapingVacantInformation
+# class AbstractScrapingVacant
+class ScrapingVacant < AbstractScrapingVacant
   require 'open-uri'
 
   def execute
@@ -22,7 +22,7 @@ class ScrapingVacantInformation < AbstractScrapingVacantInformation
   private
 
   def map_vacant_info(id, context)
-    VacantInformation.new(id: id, context: context)
+    Vacant.new(id: id, context: context)
   end
 
   def html_elements
@@ -45,6 +45,6 @@ class ScrapingVacantInformation < AbstractScrapingVacantInformation
 
   def extract_info(info)
     text = info.match(%r{\A<td.+?>(?<text>.+?)</td>\z})[:text]
-    text.match(/\A(?<availability>[×|○])　+?(?<context>[最|現].+?)\z/)
+    text.match(/\A.+?(?<context>[最短|現在].+?)\z/)
   end
 end

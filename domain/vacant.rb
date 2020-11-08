@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# vacant_information.rb
-class VacantInformation
+# Vacant
+class Vacant
   attr_reader :id, :context
 
   def initialize(id:, context: '現在のところ空きがありません。')
@@ -21,6 +21,6 @@ class VacantInformation
   def validate_id!
     return if ScrapingText::LIST.keys.map(&:to_s).include?(id)
 
-    raise StandardError, 'invalid id'
+    raise StandardError, "invalid id : #{id}"
   end
 end

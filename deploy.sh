@@ -5,12 +5,14 @@ cp -f lambda_function.rb deploy/tmp/
 mkdir deploy/tmp/domain
 mkdir deploy/tmp/infra
 mkdir deploy/tmp/usecase
+mkdir deploy/tmp/presentation
 cp -f domain/*.rb deploy/tmp/domain/
 cp -f infra/*.rb deploy/tmp/infra/
 cp -f usecase/*.rb deploy/tmp/usecase/
+cp -f presentation/*.rb deploy/tmp/presentation/
 chmod -R 755 deploy/tmp/*
-rm deploy/dest/medicalCheckupVacantInformation.zip
-cd deploy/tmp && zip -r ../dest/medicalCheckupVacantInformation.zip . && cd -
+rm deploy/dest/medicalCheckupVacant.zip
+cd deploy/tmp && zip -r ../dest/medicalCheckupVacant.zip . && cd -
 rm -rf deploy/tmp/*
 
 env=$1
@@ -24,6 +26,6 @@ else
 fi
 aws lambda update-function-code \
   --function-name $lambda_function_name \
-  --zip-file fileb://`pwd`/deploy/dest/medicalCheckupVacantInformation.zip
+  --zip-file fileb://`pwd`/deploy/dest/medicalCheckupVacant.zip
 
-rm deploy/dest/medicalCheckupVacantInformation.zip
+rm deploy/dest/medicalCheckupVacant.zip

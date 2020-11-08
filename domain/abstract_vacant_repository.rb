@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
-# AbstractVacantInformationRepository
-class AbstractVacantInformationRepository
+# AbstractVacantRepository
+class AbstractVacantRepository
   def find_all
     raise NotImplementedError, "Not implemented #{self.class}##{__method__}!!"
   end

@@ -7,7 +7,7 @@ gem install aws-sdk-dynamodb
 ```
 
 ```sh
-development=true ruby execute_on_development.rb
+ruby execute_development.rb
 ```
 
 * Execute test
