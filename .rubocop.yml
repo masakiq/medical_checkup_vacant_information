@@ -9,8 +9,10 @@
 # Offense count: 12
 # Configuration parameters: EnforcedStyle, CheckMethodNames, CheckSymbols.
 # SupportedStyles: snake_case, normalcase, non_integer
+
+AllCops:
+  NewCops: enable
+
 Naming/VariableNumber:
   Exclude:
-    - 'test/domain/vacant_information_test.rb'
-    - 'test/domain/vacant_information_with_past_test.rb'
-    - 'test/presentation/build_payload_for_notify_test.rb'
+    - 'test/**/*'
