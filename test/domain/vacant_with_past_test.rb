@@ -31,6 +31,36 @@ class VacantWithPastTest < Test::Unit::TestCase
     assert_equal(past_vacant.increased?, false)
   end
 
+  def test_become_to_zero_1
+    past_vacant = VacantWithPast.new(
+      id: 'ookubo_basic_pm',
+      context: '現在のところ空きがありません。',
+      past_number: 5
+    )
+
+    assert_equal(past_vacant.became_to_zero?, true)
+  end
+
+  def test_become_to_zero_2
+    past_vacant = VacantWithPast.new(
+      id: 'ookubo_basic_pm',
+      context: '現在のところ空きがありません。',
+      past_number: 0
+    )
+
+    assert_equal(past_vacant.became_to_zero?, false)
+  end
+
+  def test_become_to_zero_3
+    past_vacant = VacantWithPast.new(
+      id: 'ookubo_basic_pm',
+      context: '最短 10/01 より1個の枠があります。',
+      past_number: 0
+    )
+
+    assert_equal(past_vacant.became_to_zero?, false)
+  end
+
   def test_reached_the_value_to_be_notified_1
     past_vacant = VacantWithPast.new(
       id: 'ookubo_basic_pm',
