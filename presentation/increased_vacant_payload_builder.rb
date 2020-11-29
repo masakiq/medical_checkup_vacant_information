@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
-# BuildPayloadForNotify
-class BuildPayloadForNotify
+# IncreasedVacantPayloadBuilder
+class IncreasedVacantPayloadBuilder
   def execute(vacants)
     return if vacants.empty?
 
@@ -11,7 +11,7 @@ class BuildPayloadForNotify
   private
 
   def build_payload(vacants) # rubocop:disable Metrics/MethodLength
-    body = '*空き情報が更新されました*'
+    body = '*空きが増えました*'
     body << "\n\n"
     vacants.each do |vacant|
       body << '```'
@@ -20,7 +20,7 @@ class BuildPayloadForNotify
       body << "\n"
       body << vacant.context
       body << "\n"
-      body << vacant.display_diff_number
+      body << "枠が #{vacant.increased_count} 増えました。"
       body << "\n"
       body << '```'
       body << "\n"

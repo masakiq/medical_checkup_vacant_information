@@ -9,29 +9,19 @@ class VacantWithPast < Vacant
     super(id: id, context: context)
   end
 
-  def reached_the_value_to_be_notified?
-    diff_number < -70 || diff_number > 2 || became_zero?
+  def increased?
+    increased_count > 2
+  end
+
+  def became_to_zero?
+    number.zero? && past_number.positive?
   end
 
   def scraping_text
     ScrapingText.new(id: id)
   end
 
-  def display_diff_number
-    if diff_number.positive?
-      "枠が #{diff_number.abs} 増えました。"
-    else
-      "枠が #{diff_number.abs} 減りました。"
-    end
-  end
-
-  private
-
-  def diff_number
+  def increased_count
     number - past_number
-  end
-
-  def became_zero?
-    number.zero? && past_number.positive?
   end
 end
