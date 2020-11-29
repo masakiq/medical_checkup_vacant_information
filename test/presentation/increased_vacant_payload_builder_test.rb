@@ -1,6 +1,6 @@
 # frozen_string_literal: true
 
-class BuildPayloadForNotifyTest < Test::Unit::TestCase
+class IncreasedVacantPayloadBuilderTest < Test::Unit::TestCase
   def test_execute_1 # rubocop:disable Metrics/MethodLength
     vacants = ScrapingText::LIST.keys.map do |text|
       VacantWithPast.new(
@@ -9,7 +9,7 @@ class BuildPayloadForNotifyTest < Test::Unit::TestCase
         context: '最短10/01より10個の枠があります。'
       )
     end
-    payload = BuildPayloadForNotify.new.execute(vacants)
+    payload = IncreasedVacantPayloadBuilder.new.execute(vacants)
 
     expected_payload = <<~PAYLOAD
       *空き情報が更新されました*
@@ -60,7 +60,7 @@ class BuildPayloadForNotifyTest < Test::Unit::TestCase
   end
 
   def test_execute_2
-    payload = BuildPayloadForNotify.new.execute([])
+    payload = IncreasedVacantPayloadBuilder.new.execute([])
 
     assert_equal(payload, nil)
   end

@@ -14,8 +14,9 @@ def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument
   past_vacants = VacantRepository.new.find_all
   merged_vacants = MergePastNumberToCurrentVacant.new.execute(current_vacants, past_vacants)
   filter_increased_vacants = FilterIncreasedVacant.new.execute(merged_vacants)
-  payload = BuildPayloadForNotify.new.execute(filter_increased_vacants)
-  NotifySlack.new.execute(payload: payload)
+  increased_vacant_payload = IncreasedVacantPayloadBuilder.new.execute(filter_increased_vacants)
+  slack_notifier = NotifySlack.new
+  slack_notifier.execute(payload: increased_vacant_payload)
   PersistVacant.new.execute(current_vacants)
   { statusCode: 200, body: JSON.generate('Hello from Lambda!') }
 end

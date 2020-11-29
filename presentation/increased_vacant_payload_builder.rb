@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
-# BuildPayloadForNotify
-class BuildPayloadForNotify
+# IncreasedVacantPayloadBuilder
+class IncreasedVacantPayloadBuilder
   def execute(vacants)
     return if vacants.empty?
 
