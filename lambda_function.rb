@@ -15,7 +15,7 @@ def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument
   merged_vacants = MergePastNumberToCurrentVacant.new.execute(current_vacants, past_vacants)
   filtered_vacants = FilterVacant.new.execute(merged_vacants)
   payload = BuildPayloadForNotify.new.execute(filtered_vacants)
-  NotifySlack.new.execute(payload)
+  NotifySlack.new.execute(payload: payload)
   PersistVacant.new.execute(current_vacants)
   { statusCode: 200, body: JSON.generate('Hello from Lambda!') }
 end
