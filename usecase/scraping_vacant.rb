@@ -2,15 +2,7 @@
 
 # class ScrapingVacant
 class ScrapingVacant
-  KENPO_URL =
-    if ENV['test']
-      './test/dummy_html/kenpo.html'
-    else
-      'https://ks.its-kenpo.or.jp/customer/vacancies'
-    end
-
-  def execute(fetch_html)
-    html_elements = fetch_html.execute(KENPO_URL)
+  def execute(html_elements)
     table_elements = extract_table_elements(html_elements)
     target_indexies = extract_target_indexes(table_elements)
     vacant_elements = extract_vacant_elements(table_elements, target_indexies)

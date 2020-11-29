@@ -2,14 +2,17 @@
 
 class ScrapingVacantTest < Test::Unit::TestCase
   class DummyFetchHtml < AbstractFetchHtml
-    def execute(url)
-      content = File.open(url).read
+    KENPO_URL = './test/dummy_html/kenpo.html'
+
+    def self.execute
+      content = File.open(KENPO_URL).read
       content.split("\n").map(&:strip)
     end
   end
 
   def test_execute
-    vacants = ScrapingVacant.new.execute(DummyFetchHtml.new)
+    html_elements = DummyFetchHtml.execute
+    vacants = ScrapingVacant.new.execute(html_elements)
 
     assert_equal(vacants.count, 8)
     assert_equal(vacants.map(&:class).map(&:to_s).all?('Vacant'), true)

@@ -8,8 +8,9 @@ unless ENV['development']
   Dir["#{File.dirname(__FILE__)}/presentation/*.rb"].sort.each { |file| require file }
 end
 
-def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument
-  current_vacants = ScrapingVacant.new.execute
+def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument,Metrics/AbcSize
+  html_elements = FetchHtml.execute
+  current_vacants = ScrapingVacant.new.execute(html_elements)
   past_vacants = VacantRepository.new.find_all
   merged_vacants = MergePastNumberToCurrentVacant.new.execute(current_vacants, past_vacants)
   filtered_vacants = FilterVacant.new.execute(merged_vacants)
