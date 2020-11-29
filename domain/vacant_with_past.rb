@@ -17,10 +17,6 @@ class VacantWithPast < Vacant
     number.zero? && past_number.positive?
   end
 
-  def reached_the_value_to_be_notified?
-    diff_number < -70 || diff_number > 2 || became_to_zero?
-  end
-
   def scraping_text
     ScrapingText.new(id: id)
   end
