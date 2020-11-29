@@ -5,16 +5,12 @@ class NotifySlack
   def execute(payload:, icon_emoji: ':hospital:')
     return if payload.nil? || payload.empty?
 
-    @payload = payload
-    @icon_emoji = icon_emoji
-    notify_to_slack
+    notify_to_slack(payload, icon_emoji)
   end
 
   private
 
-  attr_reader :payload, :icon_emoji
-
-  def notify_to_slack # rubocop:disable Metrics/MethodLength
+  def notify_to_slack(payload, icon_emoji) # rubocop:disable Metrics/MethodLength
     parms = {
       text: payload,
       channel: '#medical_booking',
