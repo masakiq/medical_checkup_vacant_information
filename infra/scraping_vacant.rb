@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 # class ScrapingVacant
-class ScrapingVacant
+class ScrapingVacant < AbstractScrapingVacant
   def execute(html_elements)
     table_elements = extract_table_elements(html_elements)
     target_indexies = extract_target_indexes(table_elements)
