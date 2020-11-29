@@ -12,7 +12,7 @@ class IncreasedVacantPayloadBuilderTest < Test::Unit::TestCase
     payload = IncreasedVacantPayloadBuilder.new.execute(vacants)
 
     expected_payload = <<~PAYLOAD
-      *空き情報が更新されました*
+      *空きが増えました*
 
       ```
       大久保　基本健診【午後】

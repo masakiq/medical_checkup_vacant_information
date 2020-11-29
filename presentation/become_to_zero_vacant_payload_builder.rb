@@ -1,7 +1,7 @@
 # frozen_string_literal: false
 
-# IncreasedVacantPayloadBuilder
-class IncreasedVacantPayloadBuilder
+# BecomeToZeroVacantPayloadBuilder
+class BecomeToZeroVacantPayloadBuilder
   def execute(vacants)
     return if vacants.empty?
 
@@ -11,7 +11,7 @@ class IncreasedVacantPayloadBuilder
   private
 
   def build_payload(vacants) # rubocop:disable Metrics/MethodLength
-    body = '*空きが増えました*'
+    body = '*空きが無くなりました*'
     body << "\n\n"
     vacants.each do |vacant|
       body << '```'
@@ -19,8 +19,6 @@ class IncreasedVacantPayloadBuilder
       body << vacant.scraping_text.body
       body << "\n"
       body << vacant.context
-      body << "\n"
-      body << vacant.display_diff_number
       body << "\n"
       body << '```'
       body << "\n"
