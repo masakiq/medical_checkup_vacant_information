@@ -9,6 +9,10 @@ class VacantWithPast < Vacant
     super(id: id, context: context)
   end
 
+  def increased?
+    diff_number > 2
+  end
+
   def reached_the_value_to_be_notified?
     diff_number < -70 || diff_number > 2 || became_zero?
   end

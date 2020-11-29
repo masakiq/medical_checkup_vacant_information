@@ -1,6 +1,36 @@
 # frozen_string_literal: true
 
 class VacantWithPastTest < Test::Unit::TestCase
+  def test_increased_1
+    past_vacant = VacantWithPast.new(
+      id: 'ookubo_basic_pm',
+      context: '最短 10/01 より13個の枠があります。',
+      past_number: 10
+    )
+
+    assert_equal(past_vacant.increased?, true)
+  end
+
+  def test_increased_2
+    past_vacant = VacantWithPast.new(
+      id: 'ookubo_basic_pm',
+      context: '最短 10/01 より12個の枠があります。',
+      past_number: 10
+    )
+
+    assert_equal(past_vacant.increased?, false)
+  end
+
+  def test_increased_3
+    past_vacant = VacantWithPast.new(
+      id: 'ookubo_basic_pm',
+      context: '最短 10/01 より5個の枠があります。',
+      past_number: 10
+    )
+
+    assert_equal(past_vacant.increased?, false)
+  end
+
   def test_reached_the_value_to_be_notified_1
     past_vacant = VacantWithPast.new(
       id: 'ookubo_basic_pm',
