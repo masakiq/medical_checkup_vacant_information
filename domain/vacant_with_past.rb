@@ -10,7 +10,7 @@ class VacantWithPast < Vacant
   end
 
   def increased?
-    diff_number > 2
+    increased_count > 2
   end
 
   def became_to_zero?
@@ -21,17 +21,7 @@ class VacantWithPast < Vacant
     ScrapingText.new(id: id)
   end
 
-  def display_diff_number
-    if diff_number.positive?
-      "枠が #{diff_number.abs} 増えました。"
-    else
-      "枠が #{diff_number.abs} 減りました。"
-    end
-  end
-
-  private
-
-  def diff_number
+  def increased_count
     number - past_number
   end
 end
