@@ -1,0 +1,317 @@
+
+<!DOCTYPE html>
+<html lang="ja" xml:lang="ja">
+<head>
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <!-- TemplateBeginEditable name="doctitle" -->
+  <title>健診予約システム</title>
+  <!-- TemplateEndEditable -->
+  <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1.0,minimum-scale=1.0,maximum-scale=1.0,user-scalable=no">
+  <link data-turbolinks-track="true" href="/assets/user/application-d426b09bf62fea2c1088ed8d94b3db0a.css" media="all" rel="stylesheet" />
+  <script data-turbolinks-track="true" src="/assets/application-9ba008d9e1215dd9e0d8337507e7fd24.js"></script>
+  <script src="/javascripts/ajaxzip3/ajaxzip3.js"></script>
+  <!--[if lt IE 9]>
+     <script src="/assets/html5shiv-b17cb2d0584935bef789618283bf7da0.js"></script>
+  <![endif]-->
+  <script type="text/javascript">
+
+      var timing_time = 2 * 60 * 1000;
+
+      function timingSendAjax() {
+          $.ajax({
+              url: '/admin/base_comas/timing',
+              type: 'post',
+              global: false
+          });
+      }
+
+      $(function () {
+          var iCount_timing = 0;
+          $('.ajax-indicator').hide();
+          $(document).ajaxStart(function () {
+              iCount_timing = setInterval("timingSendAjax()", timing_time);
+              $('.ajax-indicator').show();
+          });
+          $(document).ajaxStop(function () {
+              clearInterval(iCount_timing);
+              $('.ajax-indicator').hide();
+          });
+      });
+
+      function showLoading() {
+          var iCount_timing = 0;
+          iCount_timing = setInterval("timingSendAjax()", timing_time);
+          $('.ajax-indicator').show();
+      }
+
+      function hideLoading() {
+          var iCount_timing = 0;
+          clearInterval(iCount_timing);
+          $('.ajax-indicator').hide();
+      }
+
+      $(document).on("keydown", ":input:not(textarea)", function (event) {
+          if (event.key == "Enter") {
+              event.preventDefault();
+          }
+      });
+  </script>
+  <meta content="authenticity_token" name="csrf-param" />
+<meta content="kuPAruNZhCUB2++xMs04yuYX3Y8fSFTuYYcr+uiZoXE=" name="csrf-token" />
+    <!-- Global site tag (gtag.js) - Google Analytics -->
+  <script async src="https://www.googletagmanager.com/gtag/js?id=UA-159065254-1"></script>
+  <script>
+      window.dataLayer = window.dataLayer || [];
+
+      function gtag() {
+          dataLayer.push(arguments);
+      }
+
+      gtag('js', new Date());
+
+      gtag('config', 'UA-159065254-1');
+  </script>
+
+</head>
+
+<body class="rulePage">
+<header id="header">
+  <div class="header_innder clearfix">
+  <h2 class="logo">
+    <a href="/">
+      <span>関東ITソフトウェア</span>
+      <span>健康保険組合</span><br/>
+      <strong style="font-size: 20px;">健診予約システム</strong>
+    </a>
+  </h2>
+  <div class="sp_menu">
+    <div class="icon-animation btn-slide">
+      <i class="fa fa-bars"></i>
+    </div>
+  </div>
+</div>
+<nav class="nav_header clearfix">
+  <ul class="clearfix">
+      <li class="nav_rule"><a href="/customer/questionnaires/question_01">個人空き枠照会・新規予約</a> </li>
+<!--      <li class="nav_rule"> </li>-->
+      <li class="nav_person"><a href="/personal/navigations">個人予約照会・問診回答</a> </li>
+    <li class="nav_group"><a href="/group/managers">事務担当者メニュー</a></li>
+  </ul>
+</nav>
+<script type="text/javascript">
+    $(document).ready(function () {
+        $(".btn-slide").click(function () {
+            $(".nav_header").slideToggle();
+            return false;
+        })
+    })
+</script>
+</header>
+<div id="container">
+  <div class="path"><a href="/">インターネット予約</a>
+    &gt;  <a href="/customer/questionnaires/question_01">個人空き枠照会・新規予約</a>
+  &gt;
+    現在の空き状況俯瞰表
+</div>
+
+  <div style="position:relative;">
+    <h1 class="h1_title">
+
+        現在の空き状況俯瞰表
+
+    </h1>
+  </div>
+  <div id="flash_alert">
+
+  </div>
+  <div class="content">
+  <div>
+    <div style="float: right">
+      最終更新： 2020/11/08 12:58:03
+    </div>
+    <table class="tlist mb50">
+      <tr>
+        <th colspan="2">＜大久保健診センター＞</th>
+      </tr>
+        <tr>
+          <th width="33%">大久保　1日人間ドック（胃内視鏡）【午前】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <th width="33%">大久保　1日人間ドック（胃部X線）【午前】</th>
+          <td style="text-align:left">○　　　最短 12/08 より28個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">大久保　健保指定ドック【午前】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <th width="33%">大久保　1日人間ドック（胃部X線）【午後】</th>
+          <td style="text-align:left">○　　　最短 12/08 より6個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">大久保　健保指定ドック【午後】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <th width="33%">大久保　基本健診【午後】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <th width="33%">子宮頸がん検診・子宮卵巣検査【午前】</th>
+          <td style="text-align:left">○　　　最短 11/10 より120個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">子宮頸がん検診・子宮卵巣検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/10 より97個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">乳腺超音波検査【午前】</th>
+          <td style="text-align:left">○　　　最短 11/10 より132個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">乳腺超音波検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/10 より93個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">マンモグラフィ検査【午前】</th>
+          <td style="text-align:left">○　　　最短 11/11 より30個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">マンモグラフィ検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/10 より181個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">腹部超音波検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/11 より64個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">胃部X線検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/10 より99個の枠があります。</td>
+        </tr>
+    </table>
+    <table class="tlist mb50">
+      <tr>
+        <th colspan="2">＜山王健診センター＞</th>
+      </tr>
+        <tr>
+          <th width="33%">山王　1日人間ドック（胃内視鏡）【午前】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <th width="33%">山王　1日人間ドック（胃部X線）【午前】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <th width="33%">山王　健保指定ドック【午前】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <th width="33%">山王　1日人間ドック（胃部X線）【午後】</th>
+          <td style="text-align:left">△　　　最短 12/08 より2個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">山王　健保指定ドック【午後】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <th width="33%">山王　基本健診【午後】</th>
+          <td style="text-align:left">×　　　現在のところ空きがありません。</td>
+        </tr>
+        <tr>
+          <td colspan="2"></td>
+        </tr>
+        <tr>
+          <th width="33%">子宮頸がん検診・子宮卵巣検査【午前】</th>
+          <td style="text-align:left">○　　　最短 11/10 より133個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">子宮頸がん検診・子宮卵巣検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/10 より102個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">乳腺超音波検査【午前】</th>
+          <td style="text-align:left">○　　　最短 11/10 より135個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">乳腺超音波検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/11 より92個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">マンモグラフィ検査【午前】</th>
+          <td style="text-align:left">○　　　最短 11/10 より81個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">マンモグラフィ検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/10 より94個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">腹部超音波検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/13 より17個の枠があります。</td>
+        </tr>
+        <tr>
+          <th width="33%">胃部X線検査【午後】</th>
+          <td style="text-align:left">○　　　最短 11/10 より108個の枠があります。</td>
+        </tr>
+    </table>
+</div>
+
+
+    <form accept-charset="UTF-8" action="/customer/applies/empty_search" method="post"><div style="display:none"><input name="utf8" type="hidden" value="&#x2713;" /><input name="authenticity_token" type="hidden" value="kuPAruNZhCUB2++xMs04yuYX3Y8fSFTuYYcr+uiZoXE=" /></div>
+      <input id="answer_id" name="answer_id" type="hidden" />
+      <input id="service_category_id" name="service_category_id" type="hidden" />
+      <p class="btn_wp">
+        <input class="btn btn_back" name="commit" type="submit" value="前に戻る" />
+      </p>
+</form>
+
+</div>
+<!--禁止页面回退-->
+<script language="javascript">
+    //防止页面后退
+    history.pushState(null, null, document.URL);
+    window.addEventListener('popstate', function () {
+        history.pushState(null, null, document.URL);
+    });
+</script>
+</div>
+<footer id="footer">
+  <small>&copy;2020 関東ITソフトウェア健康保険組合</small>
+
+</footer>
+<p class="pageTop"><a href="#header"><i class="fa fa-arrow-circle-up"></i></a></p>
+<div id="Div_SearchNotice" class="ajax-indicator">
+  <div></div>
+  <table class="loading">
+    <tr>
+      <td>
+        <div>
+          <img src="/assets/admins/loading-95a8f949c6e82bb6401905486a8e5e23.gif" alt="ajax-loader.gif"/>
+        </div>
+      </td>
+    </tr>
+  </table>
+</div>
+<script type="text/javascript">
+
+    function clear_condition() {
+        $(':input', '#searchFromList')
+            .not(':button, :submit, :reset, :hidden, :disabled, :radio, :checkbox')
+            .val('')
+            .removeAttr('checked')
+            .removeAttr('selected');
+        $(':input', '#searchFromList')
+            .not(':button, :submit, :reset, :hidden, :disabled')
+            .removeAttr('checked')
+            .removeAttr('selected').iCheck('update');
+        ;
+        // $("#searchFromList input[name='archive']").first().prop("checked", "true");
+        // $("#searchFromList input[name='group_apply_limit']").first().prop("checked","true");
+    }
+</script>
+</body>
+</html>

@@ -2,23 +2,24 @@
 
 # NotifySlack
 class NotifySlack
-  def execute(payload)
+  def execute(payload:, icon_emoji: ':hospital:')
     return if payload.nil? || payload.empty?
 
     @payload = payload
+    @icon_emoji = icon_emoji
     notify_to_slack
   end
 
   private
 
-  attr_reader :payload
+  attr_reader :payload, :icon_emoji
 
   def notify_to_slack # rubocop:disable Metrics/MethodLength
     parms = {
       text: payload,
       channel: '#medical_booking',
       username: 'Medical Booking Bot',
-      icon_emoji: ':hospital:'
+      icon_emoji: icon_emoji
     }
 
     uri = URI.parse(ENV['SLACK_WEBHOOK_URL'])

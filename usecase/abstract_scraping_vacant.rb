@@ -2,9 +2,7 @@
 
 # AbstractScrapingVacant
 class AbstractScrapingVacant
-  KENPO_URL = 'https://ks.its-kenpo.or.jp/customer/vacancies'
-
-  def execute
+  def self.execute
     raise NotImplementedError, "Not implemented #{self.class}##{__method__}!!"
   end
 end
