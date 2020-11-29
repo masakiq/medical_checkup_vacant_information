@@ -2,14 +2,18 @@
 
 # class ScrapingVacant
 class ScrapingVacant < AbstractScrapingVacant
+  def self.execute(html_elements)
+    new.send(:execute, html_elements)
+  end
+
+  private
+
   def execute(html_elements)
     table_elements = extract_table_elements(html_elements)
     target_indexies = extract_target_indexes(table_elements)
     vacant_elements = extract_vacant_elements(table_elements, target_indexies)
     map_vacants(vacant_elements)
   end
-
-  private
 
   def extract_table_elements(html_elements)
     html_elements.select do |e|

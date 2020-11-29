@@ -12,7 +12,7 @@ class ScrapingVacantTest < Test::Unit::TestCase
 
   def test_execute
     html_elements = DummyFetchHtml.execute
-    vacants = ScrapingVacant.new.execute(html_elements)
+    vacants = ScrapingVacant.execute(html_elements)
 
     assert_equal(vacants.count, 8)
     assert_equal(vacants.map(&:class).map(&:to_s).all?('Vacant'), true)

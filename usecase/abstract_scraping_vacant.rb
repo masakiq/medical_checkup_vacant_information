@@ -2,7 +2,7 @@
 
 # AbstractScrapingVacant
 class AbstractScrapingVacant
-  def execute
+  def self.execute
     raise NotImplementedError, "Not implemented #{self.class}##{__method__}!!"
   end
 end
