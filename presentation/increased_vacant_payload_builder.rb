@@ -20,8 +20,6 @@ class IncreasedVacantPayloadBuilder
       body << "\n"
       body << vacant.context
       body << "\n"
-      body << "枠が #{vacant.increased_count} 増えました。"
-      body << "\n"
       body << '```'
       body << "\n"
     end
