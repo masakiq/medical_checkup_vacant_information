@@ -16,6 +16,10 @@ class Vacant
     0
   end
 
+  def scraping_text
+    ScrapingText.new(id: id)
+  end
+
   private
 
   def validate_id!
