@@ -26,11 +26,13 @@ def lambda_handler(event:, context:) # rubocop:disable Lint/UnusedMethodArgument
   # build payload
   increased_vacant_payload = IncreasedVacantPayloadBuilder.new.execute(increased_vacants)
   become_to_zero_vacant_payload = BecomeToZeroVacantPayloadBuilder.new.execute(become_to_zero_vacants)
+  all_vacants_payload = AllVacantsPayloadBuilder.new.execute(current_vacants, increased_vacants, become_to_zero_vacants)
 
   # notify to slack
   slack_notifier = NotifySlack.new
   slack_notifier.execute(payload: increased_vacant_payload, icon_emoji: 'zou')
   slack_notifier.execute(payload: become_to_zero_vacant_payload, icon_emoji: 'gen')
+  slack_notifier.execute(payload: all_vacants_payload)
 
   # persist vacants
   PersistVacant.new.execute(current_vacants)

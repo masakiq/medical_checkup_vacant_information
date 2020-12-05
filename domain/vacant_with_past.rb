@@ -17,10 +17,6 @@ class VacantWithPast < Vacant
     number.zero? && past_number.positive?
   end
 
-  def scraping_text
-    ScrapingText.new(id: id)
-  end
-
   def increased_count
     number - past_number
   end
